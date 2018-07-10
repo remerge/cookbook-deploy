@@ -22,11 +22,11 @@ action :create do # rubocop:disable Metrics/BlockLength
     aws_secret_access_key nr.aws_secret_access_key
     owner nr.user
     group nr.user
-    mode "0755"
-    notifies :run, "bash[make-versioned-binary]", :immediately
+    mode '0755'
+    notifies :run, 'bash[make-versioned-binary]', :immediately
   end
 
-  bash "make-versioned-binary" do
+  bash 'make-versioned-binary' do
     action :nothing
     user nr.user
     code <<-EOH

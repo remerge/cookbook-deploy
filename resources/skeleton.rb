@@ -23,7 +23,7 @@ action :create do # rubocop:disable Metrics/BlockLength
   user nr.name do
     uid nr.uid if nr.uid
     gid nr.name
-    shell "/bin/bash"
+    shell '/bin/bash'
     comment nr.name
     home homedir
   end
@@ -35,24 +35,24 @@ action :create do # rubocop:disable Metrics/BlockLength
     end
   end
 
-  directory "/home" do
+  directory '/home' do
     path ::File.dirname(homedir)
-    owner "root"
-    group "root"
-    mode "0755"
+    owner 'root'
+    group 'root'
+    mode '0755'
     recursive true
   end
 
   directory homedir do
     owner nr.name
     group nr.name
-    mode "0755"
+    mode '0755'
   end
 
   directory "#{homedir}/.ssh" do
     owner nr.name
     group nr.name
-    mode "0700"
+    mode '0700'
   end
 
   if nr.key_source
@@ -60,14 +60,14 @@ action :create do # rubocop:disable Metrics/BlockLength
       source nr.key_source
       owner nr.name
       group nr.name
-      mode "0600"
+      mode '0600'
     end
 
     cookbook_file "#{homedir}/.ssh/id_rsa.pub" do
       source "#{nr.key_source}.pub"
       owner nr.name
       group nr.name
-      mode "0644"
+      mode '0644'
     end
   end
 
@@ -79,7 +79,7 @@ action :create do # rubocop:disable Metrics/BlockLength
     directory "#{homedir}/#{d}" do
       owner nr.name
       group nr.name
-      mode "0755"
+      mode '0755'
     end
   end
 
@@ -89,7 +89,7 @@ action :create do # rubocop:disable Metrics/BlockLength
     directory "#{homedir}/shared/#{d}" do
       owner nr.name
       group nr.name
-      mode "0755"
+      mode '0755'
     end
 
     link "#{homedir}/#{d}" do
@@ -105,8 +105,8 @@ action :create do # rubocop:disable Metrics/BlockLength
  copytruncate
 }
 EOS
-    owner "root"
-    group "root"
-    mode "0644"
+    owner 'root'
+    group 'root'
+    mode '0644'
   end
 end

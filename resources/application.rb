@@ -48,7 +48,7 @@ action :create do
     symlinks nr.symlinks
 
     migrate true
-    migration_command "/bin/true" # use callbacks for actual work
+    migration_command '/bin/true' # use callbacks for actual work
 
     before_migrate nr.before_migrate
     before_symlink nr.before_symlink
