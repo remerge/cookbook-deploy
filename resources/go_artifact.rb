@@ -30,10 +30,7 @@ action :create do # rubocop:disable Metrics/BlockLength
     action :nothing
     user nr.user
     code <<-EOH
-    version=$(#{path}/bin/#{nr.user}.current -version)
-    if [ -z "$version" ]; then
-      version=$(#{path}/bin/#{nr.user}.current version)
-    fi
+    version=$(#{path}/bin/#{nr.user}.current version)
     cp #{path}/bin/#{nr.user}.current #{path}/bin/#{nr.user}.${version}
     ln -Tfs #{path}/bin/#{nr.user}.${version} #{path}/bin/#{nr.user}
     EOH
